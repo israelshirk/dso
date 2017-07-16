@@ -38,7 +38,7 @@ bool setting_realTimeMaxKF = false;   // if true, takes as many KF's as possible
 float setting_maxShiftWeightT= 0.04f * (640+480);
 float setting_maxShiftWeightR= 0.0f * (640+480);
 float setting_maxShiftWeightRT= 0.02f * (640+480);
-float setting_kfGlobalWeight = 1;   // general weight on threshold, the larger the more KF's are taken (e.g., 2 = double the amount of KF's).
+float setting_kfGlobalWeight = 2;   // general weight on threshold, the larger the more KF's are taken (e.g., 2 = double the amount of KF's).
 float setting_maxAffineWeight= 2;
 
 
@@ -69,14 +69,14 @@ float setting_minIdepthH_marg = 50;
 
 
 
-float setting_desiredImmatureDensity = 1500; // immature points per frame
-float setting_desiredPointDensity = 2000; // aimed total points in the active window.
+float setting_desiredImmatureDensity = 10000; // immature points per frame
+float setting_desiredPointDensity = 7500; // aimed total points in the active window.
 float setting_minPointsRemaining = 0.05;  // marg a frame if less than X% points remain.
-float setting_maxLogAffFacInWindow = 0.7; // marg a frame if factor between intensities to current frame is larger than 1/X or X.
+float setting_maxLogAffFacInWindow = 0.5; // marg a frame if factor between intensities to current frame is larger than 1/X or X.
 
 
-int   setting_minFrames = 5; // min frames in window.
-int   setting_maxFrames = 7; // max frames in window.
+int   setting_minFrames = 8; // min frames in window.
+int   setting_maxFrames = 10; // max frames in window.
 int   setting_minFrameAge = 1;
 int   setting_maxOptIterations=6; // max GN iterations.
 int   setting_minOptIterations=1; // min GN iterations.
@@ -207,7 +207,7 @@ bool setting_render_displayDepth = true;
 
 bool setting_fullResetRequested = false;
 
-bool setting_debugout_runquiet = false;
+bool setting_debugout_runquiet = true;
 
 int sparsityFactor = 5;	// not actually a setting, only some legacy stuff for coarse initializer.
 

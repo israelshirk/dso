@@ -62,8 +62,8 @@ int start=0;
 int end=100000;
 bool prefetch = false;
 float playbackSpeed=0;	// 0 for linearize (play as fast as possible, while sequentializing tracking & mapping). otherwise, factor on timestamps.
-bool preload=false;
-bool useSampleOutput=false;
+bool preload=true;
+bool useSampleOutput=true;
 
 
 int mode=0;
@@ -100,19 +100,19 @@ void settingsDefault(int preset)
 	{
 		printf("DEFAULT settings:\n"
 				"- %s real-time enforcing\n"
-				"- 2000 active points\n"
-				"- 5-7 active frames\n"
-				"- 1-6 LM iteration each KF\n"
+				"- 7500 active points\n"
+				"- 7-10 active frames\n"
+				"- 4-8 LM iteration each KF\n"
 				"- original image resolution\n", preset==0 ? "no " : "1x");
 
 		playbackSpeed = (preset==0 ? 0 : 1);
 		preload = preset==1;
-		setting_desiredImmatureDensity = 1500;
-		setting_desiredPointDensity = 2000;
-		setting_minFrames = 5;
-		setting_maxFrames = 7;
-		setting_maxOptIterations=6;
-		setting_minOptIterations=1;
+		setting_desiredImmatureDensity = 7500;
+		setting_desiredPointDensity = 5000;
+		setting_minFrames = 7;
+		setting_maxFrames = 10;
+		setting_maxOptIterations = 8;
+		setting_minOptIterations = 4;
 
 		setting_logStuff = false;
 	}
