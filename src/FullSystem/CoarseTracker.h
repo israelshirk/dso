@@ -21,44 +21,38 @@
 * along with DSO. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #pragma once
 
- 
+#include "IOWrapper/Output3DWrapper.h"
+#include "OptimizationBackend/MatrixAccumulators.h"
 #include "util/NumType.h"
+#include "util/settings.h"
 #include "vector"
 #include <math.h>
-#include "util/settings.h"
-#include "OptimizationBackend/MatrixAccumulators.h"
-#include "IOWrapper/Output3DWrapper.h"
 
-
-
-
-namespace dso
-{
+namespace dso {
 struct CalibHessian;
 struct FrameHessian;
 struct PointFrameResidual;
 
 class CoarseTracker {
-public:
+    public:
 	EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
 	CoarseTracker(int w, int h);
 	~CoarseTracker();
 
 	bool trackNewestCoarse(
-			FrameHessian* newFrameHessian,
-			SE3 &lastToNew_out, AffLight &aff_g2l_out,
-			int coarsestLvl, Vec5 minResForAbort,
-			IOWrap::Output3DWrapper* wrap=0);
+	    FrameHessian* newFrameHessian,
+	    SE3& lastToNew_out, AffLight& aff_g2l_out,
+	    int coarsestLvl, Vec5 minResForAbort,
+	    IOWrap::Output3DWrapper* wrap = 0);
 
 	void setCoarseTrackingRef(
-			std::vector<FrameHessian*> frameHessians);
+	    std::vector<FrameHessian*> frameHessians);
 
 	void makeK(
-			CalibHessian* HCalib);
+	    CalibHessian* HCalib);
 
 	bool debugPrint, debugPlot;
 
@@ -75,8 +69,8 @@ public:
 	int w[PYR_LEVELS];
 	int h[PYR_LEVELS];
 
-    void debugPlotIDepthMap(float* minID, float* maxID, std::vector<IOWrap::Output3DWrapper*> &wraps);
-    void debugPlotIDepthMapFloat(std::vector<IOWrap::Output3DWrapper*> &wraps);
+	void debugPlotIDepthMap(float* minID, float* maxID, std::vector<IOWrap::Output3DWrapper*>& wraps);
+	void debugPlotIDepthMapFloat(std::vector<IOWrap::Output3DWrapper*>& wraps);
 
 	FrameHessian* lastRef;
 	AffLight lastRef_aff_g2l;
@@ -87,19 +81,17 @@ public:
 	Vec5 lastResiduals;
 	Vec3 lastFlowIndicators;
 	double firstCoarseRMSE;
-private:
 
-
+    private:
 	void makeCoarseDepthL0(std::vector<FrameHessian*> frameHessians);
 	float* idepth[PYR_LEVELS];
 	float* weightSums[PYR_LEVELS];
 	float* weightSums_bak[PYR_LEVELS];
 
-
-	Vec6 calcResAndGS(int lvl, Mat88 &H_out, Vec8 &b_out, const SE3 &refToNew, AffLight aff_g2l, float cutoffTH);
-	Vec6 calcRes(int lvl, const SE3 &refToNew, AffLight aff_g2l, float cutoffTH);
-	void calcGSSSE(int lvl, Mat88 &H_out, Vec8 &b_out, const SE3 &refToNew, AffLight aff_g2l);
-	void calcGS(int lvl, Mat88 &H_out, Vec8 &b_out, const SE3 &refToNew, AffLight aff_g2l);
+	Vec6 calcResAndGS(int lvl, Mat88& H_out, Vec8& b_out, const SE3& refToNew, AffLight aff_g2l, float cutoffTH);
+	Vec6 calcRes(int lvl, const SE3& refToNew, AffLight aff_g2l, float cutoffTH);
+	void calcGSSSE(int lvl, Mat88& H_out, Vec8& b_out, const SE3& refToNew, AffLight aff_g2l);
+	void calcGS(int lvl, Mat88& H_out, Vec8& b_out, const SE3& refToNew, AffLight aff_g2l);
 
 	// pc buffers
 	float* pc_u[PYR_LEVELS];
@@ -119,30 +111,26 @@ private:
 	float* buf_warped_refColor;
 	int buf_warped_n;
 
-
-    std::vector<float*> ptrToDelete;
-
+	std::vector<float*> ptrToDelete;
 
 	Accumulator9 acc;
 };
 
-
 class CoarseDistanceMap {
-public:
+    public:
 	EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 
 	CoarseDistanceMap(int w, int h);
 	~CoarseDistanceMap();
 
 	void makeDistanceMap(
-			std::vector<FrameHessian*> frameHessians,
-			FrameHessian* frame);
+	    std::vector<FrameHessian*> frameHessians,
+	    FrameHessian* frame);
 
 	void makeInlierVotes(
-			std::vector<FrameHessian*> frameHessians);
+	    std::vector<FrameHessian*> frameHessians);
 
-	void makeK( CalibHessian* HCalib);
-
+	void makeK(CalibHessian* HCalib);
 
 	float* fwdWarpedIDDistFinal;
 
@@ -161,9 +149,7 @@ public:
 
 	void addIntoDistFinal(int u, int v);
 
-
-private:
-
+    private:
 	PointFrameResidual** coarseProjectionGrid;
 	int* coarseProjectionGridNum;
 	Eigen::Vector2i* bfsList1;
@@ -171,6 +157,4 @@ private:
 
 	void growDistBFS(int bfsNum);
 };
-
 }
-

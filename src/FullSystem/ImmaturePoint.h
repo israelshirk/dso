@@ -21,20 +21,15 @@
 * along with DSO. If not, see <http://www.gnu.org/licenses/>.
 */
 
-
 #pragma once
 
- 
 #include "util/NumType.h"
- 
+
 #include "FullSystem/HessianBlocks.h"
-namespace dso
-{
+namespace dso {
 
-
-struct ImmaturePointTemporaryResidual
-{
-public:
+struct ImmaturePointTemporaryResidual {
+    public:
 	ResState state_state;
 	double state_energy;
 	ResState state_NewState;
@@ -42,33 +37,27 @@ public:
 	FrameHessian* target;
 };
 
-
 enum ImmaturePointStatus {
-	IPS_GOOD=0,					// traced well and good
-	IPS_OOB,					// OOB: end tracking & marginalize!
-	IPS_OUTLIER,				// energy too high: if happens again: outlier!
-	IPS_SKIPPED,				// traced well and good (but not actually traced).
-	IPS_BADCONDITION,			// not traced because of bad condition.
-	IPS_UNINITIALIZED};			// not even traced once.
+	IPS_GOOD = 0, // traced well and good
+	IPS_OOB, // OOB: end tracking & marginalize!
+	IPS_OUTLIER, // energy too high: if happens again: outlier!
+	IPS_SKIPPED, // traced well and good (but not actually traced).
+	IPS_BADCONDITION, // not traced because of bad condition.
+	IPS_UNINITIALIZED
+}; // not even traced once.
 
-
-class ImmaturePoint
-{
-public:
+class ImmaturePoint {
+    public:
 	EIGEN_MAKE_ALIGNED_OPERATOR_NEW;
 	// static values
 	float color[MAX_RES_PER_POINT];
 	float weights[MAX_RES_PER_POINT];
 
-
-
-
-
 	Mat22f gradH;
 	Vec2f gradH_ev;
 	Mat22f gradH_eig;
 	float energyTH;
-	float u,v;
+	float u, v;
 	FrameHessian* host;
 	int idxInImmaturePoints;
 
@@ -81,7 +70,7 @@ public:
 	ImmaturePoint(int u_, int v_, FrameHessian* host_, float type, CalibHessian* HCalib);
 	~ImmaturePoint();
 
-	ImmaturePointStatus traceOn(FrameHessian* frame, const Mat33f &hostToFrame_KRKi, const Vec3f &hostToFrame_Kt, const Vec2f &hostToFrame_affine, CalibHessian* HCalib, bool debugPrint=false);
+	ImmaturePointStatus traceOn(FrameHessian* frame, const Mat33f& hostToFrame_KRKi, const Vec3f& hostToFrame_Kt, const Vec2f& hostToFrame_affine, CalibHessian* HCalib, bool debugPrint = false);
 
 	ImmaturePointStatus lastTraceStatus;
 	Vec2f lastTraceUV;
@@ -90,22 +79,20 @@ public:
 	float idepth_GT;
 
 	double linearizeResidual(
-			CalibHessian *  HCalib, const float outlierTHSlack,
-			ImmaturePointTemporaryResidual* tmpRes,
-			float &Hdd, float &bd,
-			float idepth);
+	    CalibHessian* HCalib, const float outlierTHSlack,
+	    ImmaturePointTemporaryResidual* tmpRes,
+	    float& Hdd, float& bd,
+	    float idepth);
 	float getdPixdd(
-			CalibHessian *  HCalib,
-			ImmaturePointTemporaryResidual* tmpRes,
-			float idepth);
+	    CalibHessian* HCalib,
+	    ImmaturePointTemporaryResidual* tmpRes,
+	    float idepth);
 
 	float calcResidual(
-			CalibHessian *  HCalib, const float outlierTHSlack,
-			ImmaturePointTemporaryResidual* tmpRes,
-			float idepth);
+	    CalibHessian* HCalib, const float outlierTHSlack,
+	    ImmaturePointTemporaryResidual* tmpRes,
+	    float idepth);
 
-private:
+    private:
 };
-
 }
-
