@@ -164,11 +164,11 @@ int PixelSelector::makeMaps(const FrameHessian* const fh,
 	//		for(int i=0;i<wG[0]*hG[0];i++)
 	//		{
 	//			float v = fh->dI[i][0]*0.8;
-	//			img8u.at<uchar>(i) = (!std::isfinite(v) || v>255) ?
-	//255 : v;
+	//			img8u.at<uchar>(i) = (!std::isfinite(v) || v>255)
+	//?  255 : v;
 	//		}
 	//		cv::FAST(img8u, pts, setting_pixelSelectionUseFast,
-	//true); 		for(unsigned int i=0;i<pts.size();i++)
+	// true); 		for(unsigned int i=0;i<pts.size();i++)
 	//		{
 	//			int x = pts[i].pt.x+0.5;
 	//			int y = pts[i].pt.y+0.5;
@@ -177,7 +177,7 @@ int PixelSelector::makeMaps(const FrameHessian* const fh,
 	//		}
 	//
 	//		printf("FAST selection: got %f / %f!\n", numHave,
-	//numWant); 		quotia = numWant / numHave;
+	// numWant); 		quotia = numWant / numHave;
 	//	}
 	//	else
 	{
@@ -255,7 +255,7 @@ int PixelSelector::makeMaps(const FrameHessian* const fh,
 	}
 
 	//	printf("PixelSelector: have %.2f%%, need %.2f%%. KEEPCURR with
-	//pot %d -> %d. Subsampled to %.2f%%\n",
+	// pot %d -> %d. Subsampled to %.2f%%\n",
 	//			100*numHave/(float)(wG[0]*hG[0]),
 	//			100*numWant/(float)(wG[0]*hG[0]),
 	//			currentPotential,

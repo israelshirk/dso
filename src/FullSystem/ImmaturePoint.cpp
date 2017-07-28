@@ -96,18 +96,17 @@ ImmaturePointStatus ImmaturePoint::traceOn(FrameHessian* frame,
 		    idepth_max, hostToFrame_Kt[0], hostToFrame_Kt[1],
 		    hostToFrame_Kt[2]);
 
-	//	const float stepsize = 1.0;				// stepsize
-	//for initial discrete search.
-	//	const int GNIterations = 3;				// max # GN
-	//iterations
-	//	const float GNThreshold = 0.1;				// GN stop
-	//after this stepsize.
+	//	const float stepsize = 1.0;				//
+	//stepsize  for initial discrete search. 	const int GNIterations =
+	//3;				// max # GN  iterations 	const float
+	//GNThreshold = 0.1;				// GN stop  after this
+	// stepsize.
 	//	const float extraSlackOnTH = 1.2;			// for
-	//energy-based outlier check, be slightly more relaxed by this factor.
+	// energy-based outlier check, be slightly more relaxed by this factor.
 	//	const float slackInterval = 0.8;			// if
-	//pixel-interval is smaller than this, leave it be. 	const float
-	//minImprovementFactor = 2;		// if pixel-interval is smaller
-	//than this, leave it be.
+	// pixel-interval is smaller than this, leave it be. 	const float
+	// minImprovementFactor = 2;		// if pixel-interval is smaller
+	// than this, leave it be.
 	// ============== project min and max. return if one of them is OOB
 	// ===================
 	Vec3f pr = hostToFrame_KRKi * Vec3f(u, v, 1);
@@ -389,19 +388,19 @@ ImmaturePointStatus ImmaturePoint::traceOn(FrameHessian* frame,
 
 	// ============== detect energy-based outlier. ===================
 	//	float absGrad0 =
-	//getInterpolatedElement(frame->absSquaredGrad[0],bestU, bestV, wG[0]);
+	// getInterpolatedElement(frame->absSquaredGrad[0],bestU, bestV, wG[0]);
 	//	float absGrad1 =
-	//getInterpolatedElement(frame->absSquaredGrad[1],bestU*0.5-0.25,
-	//bestV*0.5-0.25, wG[1]); 	float absGrad2 =
-	//getInterpolatedElement(frame->absSquaredGrad[2],bestU*0.25-0.375,
-	//bestV*0.25-0.375, wG[2]);
+	// getInterpolatedElement(frame->absSquaredGrad[1],bestU*0.5-0.25,
+	// bestV*0.5-0.25, wG[1]); 	float absGrad2 =
+	// getInterpolatedElement(frame->absSquaredGrad[2],bestU*0.25-0.375,
+	// bestV*0.25-0.375, wG[2]);
 	if (!(bestEnergy < energyTH * setting_trace_extraSlackOnTH))
 	//			|| (absGrad0*areaGradientSlackFactor <
-	//host->frameGradTH
+	// host->frameGradTH
 	//		     && absGrad1*areaGradientSlackFactor <
-	//host->frameGradTH*0.75f
+	// host->frameGradTH*0.75f
 	//			 && absGrad2*areaGradientSlackFactor <
-	//host->frameGradTH*0.50f))
+	// host->frameGradTH*0.50f))
 	{
 		if (debugPrint)
 			printf("OUTLIER!\n");
