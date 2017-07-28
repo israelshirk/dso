@@ -56,7 +56,7 @@ EFFrame::takeData()
 
 	//	Vec10 state_zero =  data->get_state_zero();
 	//	state_zero.segment<3>(0) = SCALE_XI_TRANS *
-	//state_zero.segment<3>(0); 	state_zero.segment<3>(3) = SCALE_XI_ROT
+	// state_zero.segment<3>(0); 	state_zero.segment<3>(3) = SCALE_XI_ROT
 	//* state_zero.segment<3>(3); 	state_zero[6] = SCALE_A * state_zero[6];
 	//	state_zero[7] = SCALE_B * state_zero[7];
 	//	state_zero[8] = SCALE_A * state_zero[8];

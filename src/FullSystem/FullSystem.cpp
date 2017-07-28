@@ -616,16 +616,16 @@ FullSystem::traceNewCoarse(FrameHessian* fh)
 		}
 	}
 	//	printf("ADD: TRACE: %'d points. %'d (%.0f%%) good. %'d (%.0f%%)
-	//skip. %'d (%.0f%%) badcond. %'d (%.0f%%) oob. %'d (%.0f%%) out. %'d
+	// skip. %'d (%.0f%%) badcond. %'d (%.0f%%) oob. %'d (%.0f%%) out. %'d
 	//(%.0f%%) uninit.\n", 			trace_total,
 	//			trace_good, 100*trace_good/(float)trace_total,
 	//			trace_skip, 100*trace_skip/(float)trace_total,
 	//			trace_badcondition,
-	//100*trace_badcondition/(float)trace_total,
+	// 100*trace_badcondition/(float)trace_total,
 	//			trace_oob, 100*trace_oob/(float)trace_total,
 	//			trace_out, 100*trace_out/(float)trace_total,
 	//			trace_uninitialized,
-	//100*trace_uninitialized/(float)trace_total);
+	// 100*trace_uninitialized/(float)trace_total);
 }
 
 void
@@ -770,9 +770,9 @@ FullSystem::activatePointsMT()
 	}
 
 	//	printf("ACTIVATE: %d. (del %d, notReady %d, marg %d, good %d,
-	//marg-skip %d)\n", 			(int)toOptimize.size(),
-	//immature_deleted, immature_notReady, immature_needMarg, immature_want,
-	//immature_margskip);
+	// marg-skip %d)\n", 			(int)toOptimize.size(),
+	// immature_deleted, immature_notReady, immature_needMarg,
+	// immature_want,  immature_margskip);
 
 	std::vector<PointHessian*> optimized;
 	optimized.resize(toOptimize.size());

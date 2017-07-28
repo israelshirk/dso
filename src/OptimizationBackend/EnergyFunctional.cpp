@@ -606,7 +606,7 @@ EnergyFunctional::marginalizeFrame(EFFrame* fh)
 
 	//	VecX eigenvaluesPre = HM.eigenvalues().real();
 	//	std::sort(eigenvaluesPre.data(),
-	//eigenvaluesPre.data()+eigenvaluesPre.size());
+	// eigenvaluesPre.data()+eigenvaluesPre.size());
 	//
 
 	if ((int)fh->idx != (int)frames.size() - 1) {
@@ -642,7 +642,7 @@ EnergyFunctional::marginalizeFrame(EFFrame* fh)
 	VecX SVecI = SVec.cwiseInverse();
 
 	//	std::cout << std::setprecision(16) << "SVec: " <<
-	//SVec.transpose() << "\n\n"; 	std::cout << std::setprecision(16) <<
+	// SVec.transpose() << "\n\n"; 	std::cout << std::setprecision(16) <<
 	//"SVecI: " << SVecI.transpose() << "\n\n";
 
 	// scale!
@@ -686,7 +686,7 @@ EnergyFunctional::marginalizeFrame(EFFrame* fh)
 
 	//	VecX eigenvaluesPost = HM.eigenvalues().real();
 	//	std::sort(eigenvaluesPost.data(),
-	//eigenvaluesPost.data()+eigenvaluesPost.size());
+	// eigenvaluesPost.data()+eigenvaluesPost.size());
 
 	//	std::cout << std::setprecision(16) << "HMPost:\n" << HM <<
 	//"\n\n";
@@ -807,7 +807,7 @@ EnergyFunctional::orthogonalize(VecX* b, MatXX* H)
 {
 	//	VecX eigenvaluesPre = H.eigenvalues().real();
 	//	std::sort(eigenvaluesPre.data(),
-	//eigenvaluesPre.data()+eigenvaluesPre.size()); 	std::cout <<
+	// eigenvaluesPre.data()+eigenvaluesPre.size()); 	std::cout <<
 	//"EigPre:: " << eigenvaluesPre.transpose() << "\n";
 
 	// decide to which nullspaces to orthogonalize.
@@ -818,9 +818,9 @@ EnergyFunctional::orthogonalize(VecX* b, MatXX* H)
 	  ns.end(), lastNullspaces_scale.begin(), lastNullspaces_scale.end());
 	//	if(setting_affineOptModeA <= 0)
 	//		ns.insert(ns.end(), lastNullspaces_affA.begin(),
-	//lastNullspaces_affA.end()); 	if(setting_affineOptModeB <= 0)
+	// lastNullspaces_affA.end()); 	if(setting_affineOptModeB <= 0)
 	//		ns.insert(ns.end(), lastNullspaces_affB.begin(),
-	//lastNullspaces_affB.end());
+	// lastNullspaces_affB.end());
 
 	// make Nullspaces matrix
 	MatXX N(ns[0].rows(), ns.size());
@@ -858,11 +858,11 @@ EnergyFunctional::orthogonalize(VecX* b, MatXX* H)
 		*H -= NNpiTS * *H * NNpiTS;
 
 	//	std::cout << std::setprecision(16) << "Orth SV: " <<
-	//SNN.reverse().transpose() << "\n";
+	// SNN.reverse().transpose() << "\n";
 
 	//	VecX eigenvaluesPost = H.eigenvalues().real();
 	//	std::sort(eigenvaluesPost.data(),
-	//eigenvaluesPost.data()+eigenvaluesPost.size()); 	std::cout <<
+	// eigenvaluesPost.data()+eigenvaluesPost.size()); 	std::cout <<
 	//"EigPost:: " << eigenvaluesPost.transpose() << "\n";
 }
 

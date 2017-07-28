@@ -165,7 +165,7 @@ AccumulatedSCHessianSSE::stitchDoubleInternal(MatXX* H,
 	//	{
 	//		int hIdx = 4+h*8;
 	//		H.block<4,8>(0,hIdx).noalias() =
-	//H.block<8,4>(hIdx,0).transpose();
+	// H.block<8,4>(hIdx,0).transpose();
 	//	}
 }
 

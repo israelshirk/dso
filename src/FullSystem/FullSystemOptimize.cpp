@@ -144,9 +144,9 @@ FullSystem::setNewFrameEnergyTH()
 	//
 	//	int good=0,bad=0;
 	//	for(float f : allResVec) if(f<newFrame->frameEnergyTH) good++;
-	//else bad++; 	printf("EnergyTH: mean %f, median %f, result %f (in %d,
-	//out %d)! \n", 			meanElement, nthElement,
-	//sqrtf(newFrame->frameEnergyTH), 			good, bad);
+	// else bad++; 	printf("EnergyTH: mean %f, median %f, result %f (in %d,
+	// out %d)! \n", 			meanElement, nthElement,
+	// sqrtf(newFrame->frameEnergyTH), 			good, bad);
 }
 Vec3
 FullSystem::linearizeAll(bool fixLinearization)
