@@ -790,8 +790,8 @@ void CoarseInitializer::setFirst(CalibHessian *HCalib,
 						sumGrad2 += absgrad;
 					}
 
-					//				float gth =
-					//setting_outlierTH *
+					//				float gth
+					//=  setting_outlierTH *
 					//(sqrtf(sumGrad2)+setting_outlierTHSumComponent);
 					//				pl[nl].outlierTH
 					//= patternNum*gth*gth;
